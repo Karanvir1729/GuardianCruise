@@ -12,7 +12,7 @@ def Call_Papa_Cohere(PromptSit ="Jeff is currently distracted and is busy lookin
     else:
         pream = f"You are a narrator in a fictional scenerio where everything you have heard previously must be memorized and be used to answer the questions you recieve about the incident."
     response = co.chat(message=PromptSit, preamble_override=pream,\
-                        max_tokens=500, temperature=0.5, chat_history=history)
+                        max_tokens=500, temperature=0.2, chat_history=history)
     print(response.text)
     if len(response.text) > 990:
         response.text = co.summarize(text=response.text, additional_command="Make the message briefer while keeping the tone")
