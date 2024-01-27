@@ -29,7 +29,7 @@ def my_func():
     while start!=b'1':
         start = conn.recv(1024)
 
-    message, hist = Call_Papa_Cohere()
+    
     message, hist = Call_Papa_Cohere("Jeff has crashed! Give me a quick explanation of what happened", scold=False, history=hist)
     print('sending: ' + 'Crash info')
     conn.sendall(message.encode())
