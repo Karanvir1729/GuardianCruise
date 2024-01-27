@@ -38,6 +38,136 @@ Page
 
    }
 
+   Rectangle
+   {
+       id: appNavList
+
+       width: 100
+       height: 840
+       color: "Transparent"
+       radius: 10
+
+       anchors.verticalCenter: parent.verticalCenter
+       anchors.left: parent.left
+       anchors.leftMargin: 40
+
+       Image {
+           id: logo
+           source: "qrc:/logo"
+           width: 50
+           height: 50
+           anchors.top: parent.top
+           anchors.topMargin: 30
+           anchors.horizontalCenter: parent.horizontalCenter
+       }
+
+       ColumnLayout
+       {
+           id: navigation
+           anchors.horizontalCenter: parent.horizontalCenter
+           anchors.top: logo.bottom
+           anchors.topMargin: 275
+           spacing: 60
+
+           Image
+           {
+               id: apps
+               source: "qrc:/app"
+               sourceSize.width: 30
+               sourceSize.height: 30
+
+               MouseArea
+               {
+                   id:appA
+                   anchors.fill: parent
+                   hoverEnabled: true
+                   propagateComposedEvents: true
+
+                   onEntered:
+                   {
+                       apps.opacity = 0.5;
+                   }
+
+                   onExited:
+                   {
+                       apps.opacity = 1;
+                   }
+
+                   onClicked:
+                   {
+
+                   }
+               }
+
+           }
+
+           Image
+           {
+               id: graphs
+               source: "qrc:/graph"
+               sourceSize.width: 32
+               sourceSize.height: 32
+
+               MouseArea
+               {
+                   id:graphA
+                   anchors.fill: parent
+                   hoverEnabled: true
+                   propagateComposedEvents: true
+
+                   onEntered:
+                   {
+                       graphs.opacity = 0.5;
+                   }
+
+                   onExited:
+                   {
+                       graphs.opacity = 1;
+                   }
+
+                   onClicked:
+                   {
+
+                   }
+               }
+
+           }
+
+
+           Image {
+               id: crash
+               source: "qrc:/crash"
+               sourceSize.width: 35
+               sourceSize.height: 35
+
+               MouseArea
+               {
+                   id:crashA
+                   anchors.fill: parent
+                   hoverEnabled: true
+                   propagateComposedEvents: true
+
+                   onEntered:
+                   {
+                       crash.opacity = 0.5;
+                   }
+
+                   onExited:
+                   {
+                       crash.opacity = 1;
+                   }
+
+                   onClicked:
+                   {
+
+                   }
+               }
+
+           }
+       }
+
+   }
+
    ColumnLayout {
        id: dateandtime
        anchors.left: appNav.right
