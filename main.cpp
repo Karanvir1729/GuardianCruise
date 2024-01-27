@@ -6,6 +6,8 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+    VideoReceiver videoReceiver;
+    //videoReceiver.startServer(5560);
 
     // Register VideoReceiver as a QML type
     qmlRegisterType<VideoReceiver>("com.video", 1, 0, "VideoReceiver");

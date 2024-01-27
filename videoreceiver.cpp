@@ -2,24 +2,41 @@
 #include <QDataStream>
 #include <QDebug>
 
-VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent), socket(nullptr), expectedDataSize(0)
+VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent), server(nullptr), socket(nullptr), expectedDataSize(0)
 {
-    socket = new QTcpSocket(this);
+    server = new QTcpServer(this);
+    connect(server, &QTcpServer::newConnection, this, &VideoReceiver::newConnection);
+}
+
+void VideoReceiver::startServer(quint16 port)
+{
+    qDebug() << "Starting server on port" << port;
+    if (server->listen(QHostAddress::Any, port))
+    {
+        qDebug() << "Server started";
+    }
+    else
+    {
+        qDebug() << "Error starting server:" << server->errorString();
+    }
+}
+
+void VideoReceiver::stopServer()
+{
+    qDebug() << "Stopping server";
+    server->close();
+}
+
+void VideoReceiver::newConnection()
+{
+    qDebug() << "New connection established";
+    socket = server->nextPendingConnection();
     connect(socket, &QTcpSocket::readyRead, this, &VideoReceiver::readData);
-}
-
-void VideoReceiver::connectToServer(const QString &serverAddress, quint16 port)
-{
-    socket->connectToHost(serverAddress, port);
-}
-
-void VideoReceiver::disconnectFromServer()
-{
-    socket->disconnectFromHost();
 }
 
 void VideoReceiver::readData()
 {
+    qDebug() << "Connected...";
     while (socket->bytesAvailable() > 0)
     {
         if (expectedDataSize == 0)
@@ -29,7 +46,7 @@ void VideoReceiver::readData()
                 return;
             }
 
-            socket->read(reinterpret_cast<char*>(&expectedDataSize), sizeof(quint64));
+            socket->read(reinterpret_cast<char *>(&expectedDataSize), sizeof(quint64));
         }
 
         if (socket->bytesAvailable() < expectedDataSize)

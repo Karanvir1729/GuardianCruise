@@ -2,6 +2,7 @@
 #define VIDEORECEIVER_H
 
 #include <QObject>
+#include <QTcpServer>
 #include <QTcpSocket>
 #include <QImage>
 
@@ -15,13 +16,15 @@ signals:
     void frameReceived(const QImage &frame);
 
 public slots:
-    void connectToServer(const QString &serverAddress, quint16 port);
-    void disconnectFromServer();
+    void startServer(quint16 port);
+    void stopServer();
 
 private slots:
+    void newConnection();
     void readData();
 
 private:
+    QTcpServer *server;
     QTcpSocket *socket;
     quint64 expectedDataSize;
     QByteArray buffer;

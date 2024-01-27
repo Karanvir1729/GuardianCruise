@@ -250,14 +250,16 @@ Page
        }
 
        Component.onCompleted: {
-           // Connect to the Python server
-           videoReceiver.connectToServer("100.65.10.40", 5555);
+           // Connect to the server
+           videoReceiver.startServer(5560);
        }
 
        Connections {
            target: videoReceiver
-           function onFrameReceived(frame) {
+           function onFrameReceived(frame)
+           {
                videopull.source = frame;
+               console.log("frame receiving");
            }
        }
    }
