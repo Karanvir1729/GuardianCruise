@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="black">Exo2-Black.ttf</file>
+        <file alias="bold">Exo2-Bold.ttf</file>
+        <file alias="medium">Exo2-Medium.ttf</file>
+        <file alias="regular">Exo2-Regular.ttf</file>
+    </qresource>
+</RCC>

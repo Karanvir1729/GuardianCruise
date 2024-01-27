@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 Window {
     width: 2560
@@ -6,15 +7,11 @@ Window {
     visible: true
     title: qsTr("GuardianCruise")
 
-
-
-    Rectangle {
-        id: background
+    StackView
+    {
+        id: loader
         anchors.fill: parent
-
-        Image {
-            id: bgSvg
-            source: "qrc:/bg.svg"
-        }
+        initialItem: "qrc:/GuardianCruise/QMLfiles/home.qml"
     }
+
 }

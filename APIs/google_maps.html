@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Integration</title>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5xrmCpF-imTYPDiwZ8N7gl7YaA5xjLaI&loading=async&callback=initMap">
+    </script>
+    <script>
+        var map;
+
+        function initMap() {
+            // Initialize Google Map
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 0, lng: 0 },  // Default center (update with current location)
+                zoom: 8
+            });
+
+            // Update map with current location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(pos);
+                }, function(error) {
+                    console.error('Error getting geolocation:', error);
+                });
+            } else {
+                console.error('Geolocation not supported by your browser.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="map" style="height:100%;"></div>
+</body>
+</html>
