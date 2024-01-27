@@ -33,6 +33,61 @@ Page
 
    }
 
+   ColumnLayout {
+       id: dateandtime
+       anchors.left: appNav.right
+       anchors.leftMargin: 30
+       anchors.bottom: cameraNav.top
+       anchors.bottomMargin: 70
+
+       Timer {
+           id: timer
+           interval: 1000 // Update every 1000 milliseconds (1 second)
+           running: true
+           repeat: true
+
+           onTriggered: {
+               updateDateTime();
+               updateDay();
+           }
+       }
+
+       Text {
+           id: timeText
+
+           font.family: black.name
+           color: "White"
+           font.pixelSize: 30
+       }
+       FontLoader {
+           id: black
+           source: "qrc:/black"
+       }
+
+       Text {
+           id: dayText
+           FontLoader {
+               id: regularDay
+               source: "qrc:/regular"
+           }
+           font.family: regularDay.name
+           color: "White"
+           font.pixelSize: 20
+       }
+
+   }
+
+   function updateDateTime() {
+       var currentDate = new Date();
+       timeText.text = Qt.formatDateTime(currentDate, "h:mm:ss ap");
+   }
+
+   function updateDay() {
+       var currentDate = new Date();
+       dayText.text = Qt.formatDateTime(currentDate, "dddd | d MMMM yyyy");
+   }
+
+
    Rectangle
    {
        id: cameraNav
