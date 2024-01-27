@@ -1,8 +1,17 @@
 import QtQuick
+import QtQuick.Controls
 
 Window {
-    width: 640
-    height: 480
+    width: 2560
+    height: 1600
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("GuardianCruise")
+
+    StackView
+    {
+        id: loader
+        anchors.fill: parent
+        initialItem: "qrc:/GuardianCruise/QMLfiles/home.qml"
+    }
+
 }

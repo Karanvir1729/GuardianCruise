@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="pp">profileImg</file>
+        <file alias="logo">mercedes-benz-9-logo-png-transparent.png</file>
+        <file alias="app">app.png</file>
+        <file alias="graph">graph.png</file>
+        <file alias="crash">Asset 3.png</file>
+    </qresource>
+</RCC>

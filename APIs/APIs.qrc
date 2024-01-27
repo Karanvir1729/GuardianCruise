@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>google_maps.html</file>
+    </qresource>
+</RCC>
