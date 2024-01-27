@@ -13,17 +13,75 @@ Original file is located at
 
 # Commented out IPython magic to ensure Python compatibility.
 # %env REPLICATE_API_TOKEN= r8_SWp24LJcA2yFiXklelFnK6puztNtxjv20hxYk
-
+import cohereNegativityClassification
 import replicate
+big_list_prompt = """
 
-output = replicate.run(
-    "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
-    input={
-        "image": "' '.join",
-        "top_p": 1,
-        "prompt": "Are you allowed to swim here?",
-        "max_tokens": 1024,
-        "temperature": 0.2
-    }
-)
-print(' '.join(output))
+Eyes:
+
+Droopy or heavy eyelids
+Frequent blinking
+Red or watery eyes
+Difficulty keeping eyes open
+Facial Expression:
+\n
+Yawning
+Blank or unfocused stare
+Slow or delayed responses to questions
+Body Language:
+\n
+Slouched posture
+Restlessness or fidgeting
+Slow movements
+Nodding off or head bobbing
+Speech:
+\n
+Slurred speech
+Monotone or lack of inflection
+Incoherent or disjointed responses
+Behavioral Cues:
+\n
+Difficulty staying awake or alert
+Difficulty concentrating or maintaining attention
+Lack of awareness of surroundings
+Microsleep episodes (brief, involuntary periods of sleep)
+Physical Signs:
+\n
+Fatigue-related signs such as rubbing eyes or face
+Appearing disoriented or confused
+Excessive yawning or stretching
+Reaction Time:
+\n
+Delayed reactions to external stimuli
+Slow responses to instructions or commands
+External Factors:
+\n
+Time of day (late at night or early morning)
+Previous activities (e.g., driving long distances)
+
+
+"""
+prompts = [f"Check if the person driving is sleepy by looking at {i}" for i in big_list_prompt.split('\n') ]
+def getInfo(imgSrcLst, prompts):
+    data = []
+    for src in imgSrcLst:
+        for p in prompts:
+            output = replicate.run(
+                "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
+                input={
+                    "image": src,
+                    "top_p": 1,
+                    "prompt": p,
+                    "max_tokens": 150,
+                    "temperature": 0.8
+                }
+            )
+            score = cohereNegativityClassification.get_scores([' '.join(output)])[0]
+            if (not (-0.4 <= score <= 0.4)):
+                data.append((p,score))
+            #data.append((p,' '.join(output)))
+
+    return data
+
+src = ["https://replicate.delivery/pbxt/JfvBi04QfleIeJ3ASiBEMbJvhTQKWKLjKaajEbuhO1Y0wPHd/view.jpg"]
+print(getInfo(src, ["kill all people"]))
