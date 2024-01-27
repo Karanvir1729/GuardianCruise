@@ -36,16 +36,18 @@ def add_to_csv(new_data):
 
     print(f"Data has been appended to {csv_file_path}.")
 
-def get_scores(userScriptLst):
-    co = cohere.Client('cOL5L8qHbfPK78SVMkOiKkU8tkZntE6UJL1d7jnk')  # This is your trial API key
 
-    txt_file1 = 'negPosTxtTrain.txt'
-    examples = []
-    with open(txt_file1, 'r') as file:
-        for line in file:
-            parts = line.strip().split(',')
-            if len(parts) == 2:
-                examples.append(Example(parts[0], parts[1]))
+co = cohere.Client('cOL5L8qHbfPK78SVMkOiKkU8tkZntE6UJL1d7jnk')  # This is your trial API key
+
+txt_file1 = 'negPosTxtTrain.txt'
+examples = []
+with open(txt_file1, 'r') as file:
+    for line in file:
+        parts = line.strip().split(',')
+        if len(parts) == 2:
+            examples.append(Example(parts[0], parts[1]))
+
+def get_scores(userScriptLst):
 
     response = co.classify(
         model='embed-english-v3.0',

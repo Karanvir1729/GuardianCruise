@@ -15,6 +15,8 @@ Original file is located at
 # %env REPLICATE_API_TOKEN= r8_SWp24LJcA2yFiXklelFnK6puztNtxjv20hxYk
 import cohereNegativityClassification
 import replicate
+import rep
+import time
 big_list_prompt = """
 
 Eyes:
@@ -70,18 +72,26 @@ def getInfo(imgSrcLst, prompts):
                 "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
                 input={
                     "image": src,
-                    "top_p": 1,
+                    "top_p": 0.4,
                     "prompt": p,
-                    "max_tokens": 150,
-                    "temperature": 0.8
+                    "max_tokens": 50,
+                    "temperature": 0.1
                 }
             )
-            score = cohereNegativityClassification.get_scores([' '.join(output)])[0]
-            if (not (-0.4 <= score <= 0.4)):
-                data.append((p,score))
-            #data.append((p,' '.join(output)))
+            txt = [' '.join(output)]
+            #score = cohereNegativityClassification.get_scores(txt)[0]
+            #score = cohereNegativityClassification.get_scores(txt)[0]
+            score = 1
+            if (not (-0.2 <= score <= 0.2)):
+                data.append((txt,score * -100))
+            #print((p,' '.join(output)))
 
     return data
 
-src = ["https://replicate.delivery/pbxt/JfvBi04QfleIeJ3ASiBEMbJvhTQKWKLjKaajEbuhO1Y0wPHd/view.jpg"]
-print(getInfo(src, ["kill all people"]))
+src = [rep.jpg_to_data_uri("download (2).jpg")]
+start_time = time.time()
+fun = getInfo(src, ["Do you think the driver is in a condition unfit to driver, if so, describe his actions and the situation"])
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+print(f"Time taken to run the function: {elapsed_time} seconds")
