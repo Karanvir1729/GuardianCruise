@@ -39,13 +39,15 @@ while(1):
              
             #listens for the user's input 
             audio2 = r.listen(source2)
+
             if waveit == True:
-                with open("my_file.wav", "wb") as binary_file:
+                with open("my_file2.wav", "wb") as binary_file:
                     binary_file.write(audio2.get_wav_data())
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower()
             print(MyText)
             SpeakText(MyText)
+
              
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
