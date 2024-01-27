@@ -2,6 +2,7 @@
 #include <QDataStream>
 #include <QDebug>
 
+<<<<<<< HEAD
 VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent), server(nullptr), socket(nullptr), expectedDataSize(0)
 {
     server = new QTcpServer(this);
@@ -70,3 +71,17 @@ QImage VideoReceiver::byteArrayToImage(const QByteArray &data)
     stream >> image;
     return image;
 }
+=======
+VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent) , socket(nullptr), expectedDatasize(0)
+{
+    socket = new QTcpSocket(this);
+    connect(socket, &QTcpSocket::readyRead, this, &VideoReceiver::readData);
+}
+
+void VideoReceiver::connectToServer(const QString &serverAddress, quint16 port)
+{
+    socket->connectToHost(serverAddress, port);
+}
+
+
+>>>>>>> 42bcbfd (working on some headers, and class methods)
