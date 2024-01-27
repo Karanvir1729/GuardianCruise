@@ -6,6 +6,7 @@ import speech_recognition as sr
 import pyttsx3 
 from scipy.io.wavfile import write
 import numpy
+import Socket_Connection
 waveit = False
 # Initialize the recognizer 
 r = sr.Recognizer() 
@@ -22,7 +23,7 @@ def SpeakText(command):
      
 # Loop infinitely for user to
 # speak
- 
+
 while(1):    
      
     # Exception handling to handle
@@ -47,6 +48,7 @@ while(1):
             MyText = MyText.lower()
             print(MyText)
             SpeakText(MyText)
+            Socket_Connection.socket_init(MyText)
 
              
     except sr.RequestError as e:
