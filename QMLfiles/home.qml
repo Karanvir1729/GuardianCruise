@@ -1,11 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtWebEngine
-import QtLocation
-import QtPositioning 6.6
-import QtQml.Models
-import QtWebView
+import QtMultimedia
+import com.video 1.0
 
 Page
 {
@@ -35,7 +32,6 @@ Page
        anchors.verticalCenter: parent.verticalCenter
        anchors.left: parent.left
        anchors.leftMargin: 40
-
    }
 
    Rectangle
@@ -231,10 +227,8 @@ Page
    }
 
 
-   Rectangle
-   {
+   Rectangle {
        id: cameraNav
-
        width: 400
        height: 760
        anchors.left: appNav.right
@@ -243,7 +237,31 @@ Page
        anchors.bottomMargin: 40
        opacity: 0.1
        radius: 10
+
+       VideoReceiver {
+           id: videoReceiver
+       }
+
+       VideoOutput {
+           id: videopull
+           width: parent.width
+           height: parent.height
+           anchors.horizontalCenter: parent.horizontalCenter
+       }
+
+       Component.onCompleted: {
+           // Connect to the Python server
+           videoReceiver.connectToServer("100.65.10.40", 5555);
+       }
+
+       Connections {
+           target: videoReceiver
+           function onFrameReceived(frame) {
+               videopull.source = frame;
+           }
+       }
    }
+
 
     Rectangle
     {
@@ -270,19 +288,19 @@ Page
         opacity: 0.1
         radius: 10
 
-            WebView {
-                id: webView
-                url: "qrc:/google_maps.html"
+            // WebView {
+            //     id: webView
+            //     url: "qrc:/google_maps.html"
 
-                BusyIndicator {
-                    id: busy_indicator;
-                    running: false
-                    width:  100;
-                    height: 100;
-                    anchors.centerIn:  parent;
-                    visible: false
-                }
-            }
+            //     BusyIndicator {
+            //         id: busy_indicator;
+            //         running: false
+            //         width:  100;
+            //         height: 100;
+            //         anchors.centerIn:  parent;
+            //         visible: false
+            //     }
+            // }
     }
 
     Rectangle

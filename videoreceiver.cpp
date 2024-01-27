@@ -1,6 +1,8 @@
 #include "videoreceiver.h"
+#include <QDataStream>
+#include <QDebug>
 
-VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent) , socket(nullptr), expectedDatasize(0)
+VideoReceiver::VideoReceiver(QObject *parent) : QObject(parent), socket(nullptr), expectedDataSize(0)
 {
     socket = new QTcpSocket(this);
     connect(socket, &QTcpSocket::readyRead, this, &VideoReceiver::readData);
@@ -18,29 +20,29 @@ void VideoReceiver::disconnectFromServer()
 
 void VideoReceiver::readData()
 {
-    while(socket->bytesAvailable() > 0)
+    while (socket->bytesAvailable() > 0)
     {
-        if(expectedDatasize == 0)
+        if (expectedDataSize == 0)
         {
-            if(socket->bytesAvailable() < sizeof(quint64))
+            if (socket->bytesAvailable() < static_cast<int>(sizeof(quint64)))
             {
                 return;
             }
 
-            socket->read(reinterpret_cast<char*>(&expectedDatasize), sizeof(quint64));
+            socket->read(reinterpret_cast<char*>(&expectedDataSize), sizeof(quint64));
         }
 
-        if(socket->bytesAvailable() < expectedDatasize)
+        if (socket->bytesAvailable() < expectedDataSize)
         {
             return;
         }
 
-        buffer = socket->read(expectedDatasize);
+        buffer = socket->read(expectedDataSize);
         QImage frame = byteArrayToImage(buffer);
         emit frameReceived(frame);
-        //Here we cleared the buffer as we have already emmited it
-        expectedDatasize = 0;
-        buffer.clear();
+
+        // Clear the buffer as it has already been emitted
+        expectedDataSize = 0;
     }
 }
 
@@ -51,6 +53,3 @@ QImage VideoReceiver::byteArrayToImage(const QByteArray &data)
     stream >> image;
     return image;
 }
-
-
-

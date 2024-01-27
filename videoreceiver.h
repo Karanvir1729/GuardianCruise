@@ -23,11 +23,10 @@ private slots:
 
 private:
     QTcpSocket *socket;
-    quint64 expectedDatasize;
+    quint64 expectedDataSize;
     QByteArray buffer;
 
     QImage byteArrayToImage(const QByteArray &data);
-
 };
 
 #endif // VIDEORECEIVER_H
