@@ -1,6 +1,11 @@
 import QtQuick 2.15
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtWebEngine
+import QtLocation
+import QtPositioning 6.6
+import QtQml.Models
+import QtWebView
 
 Page
 {
@@ -67,10 +72,10 @@ Page
        Text {
            id: dayText
            FontLoader {
-               id: regularDay
+               id: regular
                source: "qrc:/regular"
            }
-           font.family: regularDay.name
+           font.family: regular.name
            color: "White"
            font.pixelSize: 20
        }
@@ -117,7 +122,7 @@ Page
 
     Rectangle
     {
-        id: sideCamNav
+        id: mapNav
         width: 450
         height: 400
         anchors.left: cameraNav.right
@@ -126,6 +131,20 @@ Page
         anchors.bottomMargin: 30
         opacity: 0.1
         radius: 10
+
+            WebView {
+                id: webView
+                url: "qrc:/google_maps.html"
+
+                BusyIndicator {
+                    id: busy_indicator;
+                    running: false
+                    width:  100;
+                    height: 100;
+                    anchors.centerIn:  parent;
+                    visible: false
+                }
+            }
     }
 
     Rectangle
@@ -135,7 +154,7 @@ Page
         height: 160
         anchors.left: cameraNav.right
         anchors.leftMargin: 30
-        anchors.bottom: sideCamNav.top
+        anchors.bottom: mapNav.top
         anchors.bottomMargin: 30
         opacity: 0.1
         radius: 10
@@ -179,6 +198,55 @@ Page
 
         opacity: 0.1
         radius: 30
+    }
+
+    Rectangle
+    {
+        id: accident
+        width: 100
+        height: 50
+        anchors.top: parent.top
+        anchors.topMargin: 35
+        anchors.right: voice.left
+        anchors.rightMargin: 30
+
+        opacity: 0.1
+        radius: 30
+
+        MouseArea
+        {
+            id: accArea1
+            anchors.fill: parent
+            hoverEnabled: true
+            propagateComposedEvents: true
+            onEntered:
+            {
+                accident.color = "White"
+                accident.opacity = 0.7
+                accText.color = "#00347f"
+            }
+
+            onExited:
+            {
+                accident.color = "White"
+                accident.opacity = 0.1
+                accText.color = "White"
+            }
+
+            onClicked:
+            {
+
+            }
+        }
+    }
+
+    Text {
+        id: accText
+        text: qsTr("Accident")
+        anchors.centerIn: accident
+        color: "White"
+        font.family: regular.name
+        font.pixelSize: 15
     }
 
 }

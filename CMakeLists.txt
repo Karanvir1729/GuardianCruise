@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Quick REQUIRED WebEngineQuick Positioning)
 
 qt_add_executable(appGuardianCruise
     main.cpp
@@ -36,7 +36,9 @@ set_target_properties(appGuardianCruise PROPERTIES
 )
 
 target_link_libraries(appGuardianCruise
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick
+    PRIVATE Qt6::WebEngineQuick
+    PRIVATE Qt6::Positioning)
 
 include(GNUInstallDirs)
 install(TARGETS appGuardianCruise
