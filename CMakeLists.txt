@@ -20,6 +20,8 @@ qt_add_qml_module(appGuardianCruise
     RESOURCES bgAsset/bgAsset.qrc
     QML_FILES QMLfiles/home.qml
     RESOURCES fonts/fonts.qrc
+    RESOURCES Images/images.qrc
+    RESOURCES APIs/APIs.qrc
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

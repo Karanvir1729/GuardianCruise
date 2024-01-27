@@ -38,7 +38,7 @@ Page
        anchors.left: appNav.right
        anchors.leftMargin: 30
        anchors.bottom: cameraNav.top
-       anchors.bottomMargin: 70
+       anchors.bottomMargin: 30
 
        Timer {
            id: timer
@@ -93,7 +93,7 @@ Page
        id: cameraNav
 
        width: 400
-       height: 710
+       height: 760
        anchors.left: appNav.right
        anchors.leftMargin: 30
        anchors.bottom: parent.bottom
@@ -132,7 +132,7 @@ Page
     {
         id: weatherNav
         width: 450
-        height: 110
+        height: 160
         anchors.left: cameraNav.right
         anchors.leftMargin: 30
         anchors.bottom: sideCamNav.top
@@ -146,13 +146,39 @@ Page
         id: conNav
 
         width: 400
-        height: 710
+        height: 760
         anchors.right: parent.right
         anchors.rightMargin: 30
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40
         opacity: 0.1
         radius: 10
+    }
+
+    Image {
+        id: pp
+        source: "qrc:/pp"
+        width: 60
+        height: 60
+
+        anchors.right: parent.right
+        anchors.rightMargin: 30
+        anchors.top: parent.top
+        anchors.topMargin: 30
+    }
+
+    Rectangle
+    {
+        id: voice
+        width: 350
+        height: 50
+        anchors.top: parent.top
+        anchors.topMargin: 35
+        anchors.right: pp.left
+        anchors.rightMargin: 30
+
+        opacity: 0.1
+        radius: 30
     }
 
 }
