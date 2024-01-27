@@ -39,7 +39,7 @@ def add_to_csv(new_data):
 def get_scores(userScriptLst):
     co = cohere.Client('cOL5L8qHbfPK78SVMkOiKkU8tkZntE6UJL1d7jnk')  # This is your trial API key
 
-    txt_file1 = 'modifiedtxt1.txt'
+    txt_file1 = 'negPosTxtTrain.txt'
     examples = []
     with open(txt_file1, 'r') as file:
         for line in file:
