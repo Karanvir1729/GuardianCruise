@@ -6,6 +6,7 @@ import speech_recognition as sr
 import pyttsx3 
 from scipy.io.wavfile import write
 import numpy
+waveit = False
 # Initialize the recognizer 
 r = sr.Recognizer() 
  
@@ -37,14 +38,13 @@ while(1):
             r.adjust_for_ambient_noise(source2, duration=0.2)
              
             #listens for the user's input 
-            audio2 = r.listen(source2, phrase_time_limit=2)
-            with open("my_file.wav", "wb") as binary_file:
-                binary_file.write(audio2.get_wav_data())
-            # Using google to recognize audio
+            audio2 = r.listen(source2)
+            if waveit == True:
+                with open("my_file.wav", "wb") as binary_file:
+                    binary_file.write(audio2.get_wav_data())
             MyText = r.recognize_google(audio2)
             MyText = MyText.lower()
- 
-            print("Did you say ", MyText)
+            print(MyText)
             SpeakText(MyText)
              
     except sr.RequestError as e:
@@ -52,3 +52,4 @@ while(1):
          
     except sr.UnknownValueError:
         print("unknown error occurred")
+        
