@@ -1,30 +1,15 @@
 from elevenlabs import generate, play, save, set_api_key
+import cohere 
+co = cohere.Client("GlsAPCOHHmmZZ46Kd0ivOlEsxJMDRXZNpqi9G6hW")
 set_api_key("1bd01d835b2876b35376769cfe4514b8")
-
-audio = generate(
-  text="Hello! 你好! Hola! नमस्ते! Bonjour! こんにちは! مرحبا! 안녕하세요! Ciao! Cześć! Привіт! வணக்கம்!",
-  voice="Rachel",
-  model="eleven_multilingual_v2"
-)
-
-save(audio, "Attempt one.wav")
 
 from elevenlabs import Voice, VoiceDesign, Gender, Age, Accent, play
 
-# Build a voice deisgn object
-design = VoiceDesign(
-    name='Lexa',
-    text="Hello, I am an old british lady. Are you drunk? I think you might be drunk. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    voice_description="Calm and soft with a slight British accent.",
-    gender=Gender.female,
-    age=Age.old,
-    accent=Accent.british,
-    accent_strength=1.9,
-)
+PromptSit = "Jeff is currently distracted and is busy looking at birds outside the window"
+status = "distracted"
+response = co.chat(message=PromptSit, conversation_id="1", preamble_override=f"There is a {status} driver currently driving a vehicle, you are their parent, and are about to scold them and advize them on what to do about it, in under 40 words. Be strict. The current situation is about to be given to you, respond appropiately", max_tokens=200)
+print(response.text)
 
-# Generate audio from the design, and play it to test if it sounds good (optional)
-audio = design.generate()
-save(audio, "Oldlady.wav")
-
-# Convert design to usable voice
-voice = Voice.from_design(design)
+audio = generate(voice = 'Lexa',
+    text= response.text)
+save(audio, "Oldlady2.wav")
