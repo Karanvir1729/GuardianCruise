@@ -22,6 +22,9 @@ qt_add_qml_module(appGuardianCruise
     RESOURCES fonts/fonts.qrc
     RESOURCES Images/images.qrc
     RESOURCES APIs/APIs.qrc
+    QML_FILES QMLfiles/crash.qml
+    QML_FILES QMLfiles/graphs.qml
+    SOURCES videoreceiver.h videoreceiver.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

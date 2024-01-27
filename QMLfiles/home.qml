@@ -82,6 +82,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -95,7 +97,7 @@ Page
 
                    onClicked:
                    {
-
+                        //loader.push("qrc:/GuardianCruise/QMLfiles/home.qml")
                    }
                }
 
@@ -114,6 +116,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -127,10 +131,9 @@ Page
 
                    onClicked:
                    {
-
+                        loader.push("qrc:/GuardianCruise/QMLfiles/graphs.qml")
                    }
                }
-
            }
 
 
@@ -146,6 +149,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -159,7 +164,7 @@ Page
 
                    onClicked:
                    {
-
+                        loader.push("qrc:/GuardianCruise/QMLfiles/crash.qml")
                    }
                }
 
@@ -175,9 +180,10 @@ Page
        anchors.bottom: cameraNav.top
        anchors.bottomMargin: 30
 
+
        Timer {
            id: timer
-           interval: 1000 // Update every 1000 milliseconds (1 second)
+           interval: 1
            running: true
            repeat: true
 
@@ -193,6 +199,7 @@ Page
            font.family: black.name
            color: "White"
            font.pixelSize: 30
+           text: " "
        }
        FontLoader {
            id: black
@@ -208,6 +215,7 @@ Page
            font.family: regular.name
            color: "White"
            font.pixelSize: 20
+           text: " "
        }
 
    }
@@ -349,6 +357,8 @@ Page
             anchors.fill: parent
             hoverEnabled: true
             propagateComposedEvents: true
+            acceptedButtons: Qt.LeftButton
+            cursorShape: Qt.PointingHandCursor
             onEntered:
             {
                 accident.color = "White"
@@ -365,12 +375,13 @@ Page
 
             onClicked:
             {
-
+                loader.push("qrc:/GuardianCruise/QMLfiles/crash.qml")
             }
         }
     }
 
-    Text {
+    Text
+    {
         id: accText
         text: qsTr("Accident")
         anchors.centerIn: accident
@@ -378,5 +389,4 @@ Page
         font.family: regular.name
         font.pixelSize: 15
     }
-
 }
