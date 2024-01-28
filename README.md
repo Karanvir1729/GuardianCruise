@@ -32,9 +32,9 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 
 ## Tech Stack
 
- ![Dart Logo](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
-  ![GitHub Logo](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
- ![Google Maps Logo](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+ - ![Dart Logo](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+ - ![GitHub Logo](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
+ - ![Google Maps Logo](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
 GuardianCruise utilizes OpenCV for facial feature detection, including eye tracking and yawning detection. The collected data is then fed into a machine learning model trained to recognize patterns associated with mood changes, impairment, and specific activities.
 
