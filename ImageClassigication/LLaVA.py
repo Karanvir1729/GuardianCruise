@@ -15,6 +15,20 @@ Original file is located at
 # %env REPLICATE_API_TOKEN= r8_SWp24LJcA2yFiXklelFnK6puztNtxjv20hxYk
 import cohereNegativityClassification
 import replicate
+import base64
+
+def jpg_to_data_uri(image_path):
+    with open(image_path, "rb") as image_file:
+        # Read the image file in binary mode
+        image_binary = image_file.read()
+
+        # Encode the image data as base64
+        base64_encoded_image = base64.b64encode(image_binary).decode('utf-8')
+
+        # Construct the data URI
+        data_uri = f"data:image/jpeg;base64,{base64_encoded_image}"
+
+    return data_uri
 big_list_prompt = """
 
 Eyes:
@@ -61,27 +75,19 @@ Previous activities (e.g., driving long distances)
 
 
 """
-prompts = [f"Check if the person driving is sleepy by looking at {i}" for i in big_list_prompt.split('\n') ]
-def getInfo(imgSrcLst, prompts):
-    data = []
-    for src in imgSrcLst:
-        for p in prompts:
-            output = replicate.run(
-                "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
-                input={
-                    "image": src,
-                    "top_p": 1,
-                    "prompt": p,
-                    "max_tokens": 150,
-                    "temperature": 0.8
-                }
-            )
-            score = cohereNegativityClassification.get_scores([' '.join(output)])[0]
-            if (not (-0.4 <= score <= 0.4)):
-                data.append((p,score))
-            #data.append((p,' '.join(output)))
+def getInfo(src):
 
-    return data
 
-src = ["https://replicate.delivery/pbxt/JfvBi04QfleIeJ3ASiBEMbJvhTQKWKLjKaajEbuhO1Y0wPHd/view.jpg"]
-print(getInfo(src, ["kill all people"]))
+    output = replicate.run(
+        "yorickvp/llava-13b:e272157381e2a3bf12df3a8edd1f38d1dbd736bbb7437277c8b34175f8fce358",
+        input={
+            "image": jpg_to_data_uri(src),
+            "top_p": 1,
+            "prompt": "Does the driver appear to be physically safe",
+            "max_tokens": 150,
+            "temperature": 0.2
+        }
+    )
+
+    print(' '.join(output))
+    return ' '.join(output)
