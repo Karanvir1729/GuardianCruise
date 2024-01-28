@@ -48,6 +48,7 @@ GuardianCruise utilizes OpenCV for facial feature detection, including eye track
 ## Screenshots
 - ![msedge_ETmr7eaH0m](https://github.com/Karanvir1729/GuardianCruise/assets/99195418/f3fa6216-cadb-4c25-9ba3-2ef3674839f7)
 - ![msedge_voEfYzVVEs](https://github.com/Karanvir1729/GuardianCruise/assets/99195418/1b17720d-76f4-42cc-845d-82b8f3b517ba)
+- ![jqqnojvFS6](https://github.com/Karanvir1729/GuardianCruise/assets/99195418/dc4001f1-22fd-4d57-ad7e-bfd7e07b71df)
 
 
 
