@@ -9,10 +9,6 @@ Introducing **GuardianCruise**, a project inspired by a dedication to road safet
 - [Tech Stack](#tech-stack)
 - [Screenshots](#screenshots)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -23,6 +19,7 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 1. **Pre-crash Monitoring:**
    - Facial analysis using OpenCV.
    - Detection of distracted driving and suspicious behaviors.
+   - Voice prompt in the maternal tone cautioning against distracted behavior.
 
 2. **Post-crash Assistance:**
    - Sending emails and text messages to the driver's parents.
@@ -37,7 +34,6 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 
 - ![OpenCV Logo](path/to/opencv.png)
 - ![Machine Learning Logo](path/to/ml.png)
-- [Add logos or badges of other technologies used.]
 
 GuardianCruise utilizes OpenCV for facial feature detection, including eye tracking and yawning detection. The collected data is then fed into a machine learning model trained to recognize patterns associated with mood changes, impairment, and specific activities.
 
@@ -59,7 +55,6 @@ GuardianCruise utilizes OpenCV for facial feature detection, including eye track
 
    ```bash
    cd your-project
-   [commands to install dependencies, if any]
    ```
 
 3. **Run The App:**
@@ -68,18 +63,4 @@ GuardianCruise utilizes OpenCV for facial feature detection, including eye track
    [commands to start the application]
    ```
 
-## Usage
 
-[Provide instructions and examples for users to effectively use GuardianCruise. Include any configuration settings or additional steps needed.]
-
-## Contributing
-
-[Explain how others can contribute to GuardianCruise. Include information about submitting issues, feature requests, or pull requests.]
-
-## License
-
-[Include information about the license under which GuardianCruise is distributed. For example, you can use a license badge and provide a link to the license file.]
-
-## Acknowledgements
-
-[Acknowledge and thank any third-party libraries, services, or tools used in GuardianCruise.]
