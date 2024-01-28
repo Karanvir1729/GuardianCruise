@@ -2,7 +2,8 @@ import QtQuick 2.15
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtMultimedia
-import com.video 1.0
+import com.chat 1.0
+import QtCharts 2.6
 
 Page
 {
@@ -237,30 +238,24 @@ Page
        anchors.bottomMargin: 40
        opacity: 0.1
        radius: 10
+   }
 
-       VideoReceiver {
-           id: videoReceiver
-       }
+   Rectangle {
+       id: cameraNav1
+       width: 400
+       height: 760
+       anchors.left: appNav.right
+       anchors.leftMargin: 30
+       anchors.bottom: parent.bottom
+       anchors.bottomMargin: 40
+       opacity: 0.5
+       radius: 10
 
-       // VideoOutput {
-       //     id: videopull
-       //     width: parent.width
-       //     height: parent.height
-       //     anchors.horizontalCenter: parent.horizontalCenter
-       // }
-
-       Component.onCompleted: {
-           // Connect to the server
-           videoReceiver.startServer(5560);
-       }
-
-       Connections {
-           target: videoReceiver
-           function onFrameReceived(frame)
-           {
-               videopull.source = frame;
-               console.log("frame receiving");
-           }
+       Image
+       {
+           id: graphs1
+           source: "qrc:/graphs"
+           anchors.fill: parent
        }
    }
 
@@ -324,6 +319,27 @@ Page
             //     }
             // }
     }
+
+    Rectangle
+    {
+        id: mapNav1
+        width: 450
+        height: 400
+        anchors.left: cameraNav.right
+        anchors.leftMargin: 30
+        anchors.bottom: mediaNav.top
+        anchors.bottomMargin: 30
+        opacity: 0.5
+        radius: 10
+
+        Image
+        {
+            id: centerImg
+            source: "qrc:/centerImg"
+            anchors.fill: parent
+        }
+    }
+
 
     Rectangle
     {
@@ -435,6 +451,7 @@ Page
         anchors.bottomMargin: 40
         color: "Transparent"
         radius: 10
+
         Text {
                 id:chatText
                 width: parent.width * 0.8
@@ -452,8 +469,12 @@ Page
                 Connections
                 {
                     target: chatReceiver
-
+                    function onMessageReceived(message)
+                    {
+                        chatText.text = message;
+                    }
                 }
+                Component.onCompleted: console.log("chatReceiver:", chatReceiver)
             }
     }
 
@@ -556,4 +577,5 @@ Page
         font.family: regular.name
         font.pixelSize: 15
     }
+
 }

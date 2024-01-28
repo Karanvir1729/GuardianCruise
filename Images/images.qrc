@@ -9,5 +9,7 @@
         <file alias="cover">Asset 4-8.png</file>
         <file alias="pause">Asset 7-8.png</file>
         <file alias="play">Asset 6-8.png</file>
+        <file alias="centerImg">Asset 8-8.png</file>
+        <file alias="graphs">Asset 10-8.png</file>
     </qresource>
 </RCC>

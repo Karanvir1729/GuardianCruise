@@ -5,6 +5,7 @@
 #include "chatreceiver.h"
 #include <qprocess.h>
 #include <QCamera>
+#include <QPermissions>
 
 int main(int argc, char *argv[])
 {
