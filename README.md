@@ -56,19 +56,14 @@ GuardianCruise utilizes OpenCV for facial feature detection, including eye track
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/Karanvir1729/GuardianCruise
    ```
 
 2. **Install Dependencies:**
 
    ```bash
-   cd your-project
+   cd GuardianCruise
    ```
 
-3. **Run The App:**
-
-   ```bash
-   [commands to start the application]
-   ```
 
 
