@@ -32,15 +32,15 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 
 ## Tech Stack
 
- [![Qt](https://img.shields.io/badge/Qt-5C2D91?style=flat-square&logo=qt&logoColor=white)](https://www.qt.io/)
-[![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)](https://www.cplusplus.com/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![QML](https://img.shields.io/badge/QML-44a51c?style=flat-square&logo=qml&logoColor=white)](https://doc.qt.io/qt-5.15/qtqml-index.html)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
-[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)](https://opencv.org/)
-[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
-[![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
-[![Cohere](https://img.shields.io/badge/Cohere-2c3e50?style=flat-square&logo=cohere&logoColor=white)](https://www.cohere.ai/)
+ -[![Qt](https://img.shields.io/badge/Qt-5C2D91?style=flat-square&logo=qt&logoColor=white)](https://www.qt.io/)
+-[![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=c%2B%2B&logoColor=white)](https://www.cplusplus.com/)
+-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+-[![QML](https://img.shields.io/badge/QML-44a51c?style=flat-square&logo=qml&logoColor=white)](https://doc.qt.io/qt-5.15/qtqml-index.html)
+-[![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+-[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)](https://opencv.org/)
+-[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
+-[![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
+-[![Cohere](https://img.shields.io/badge/Cohere-2c3e50?style=flat-square&logo=cohere&logoColor=white)](https://www.cohere.ai/)
 
  - 
 
