@@ -35,10 +35,7 @@ def handle_client(conn, addr):
     print(f"File received and saved as: {filename}")
     output = LLaVA.getInfo(filename)
     print(output)
-    while True:
 
-        conn.sendall(output.encode())
-        conn.close()
 
 
 # Create a socket object

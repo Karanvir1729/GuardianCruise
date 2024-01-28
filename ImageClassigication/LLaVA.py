@@ -12,7 +12,7 @@ Original file is located at
 #r8_SWp24LJcA2yFiXklelFnK6puztNtxjv20hxYk
 
 # Commented out IPython magic to ensure Python compatibility.
-# %env REPLICATE_API_TOKEN= r8_SWp24LJcA2yFiXklelFnK6puztNtxjv20hxYk
+# %env REPLICATE_API_TOKEN= r8_9houjVdinykbsh8lGrMj8DojZaXZEs91K40S7
 import cohereNegativityClassification
 import replicate
 import base64
@@ -91,3 +91,4 @@ def getInfo(src):
 
     print(' '.join(output))
     return ' '.join(output)
+print(getInfo('received_image_100.65.10.40.jpg'))
