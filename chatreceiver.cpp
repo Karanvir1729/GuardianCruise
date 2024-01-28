@@ -29,6 +29,16 @@ void ChatReceiver::stopServer()
     server->close();
 }
 
+void ChatReceiver::sendButtonClickedMessage()
+{
+    QString buttonMessage = "1";
+    qInfo()<< "Boolean sent to client";
+    for (QTcpSocket *socket : sockets)
+    {
+        socket->write(buttonMessage.toUtf8());
+    }
+}
+
 void ChatReceiver::newConnection()
 {
     qDebug() << "New connection established";

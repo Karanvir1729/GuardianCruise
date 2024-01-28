@@ -337,7 +337,8 @@ Page
 
             onClicked:
             {
-
+                chatReceiver.sendButtonClickedMessage();
+                console.log("Carshed!")
             }
         }
     }

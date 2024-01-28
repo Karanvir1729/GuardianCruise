@@ -413,6 +413,29 @@ Page
 
     Rectangle
     {
+        id: voice1
+        width: 350
+        height: 50
+        anchors.top: parent.top
+        anchors.topMargin: 35
+        anchors.right: pp.left
+        anchors.rightMargin: 30
+        color: "Transparent"
+        radius: 30
+        Text {
+            id: search
+            text: qsTr("Use voice command..")
+            color: "White"
+            font.family: regular.name
+            font.pixelSize: 15
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Rectangle
+    {
         id: accident
         width: 100
         height: 50

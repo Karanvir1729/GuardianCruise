@@ -18,6 +18,7 @@ signals:
 public slots:
     void startServer(quint16 port);
     void stopServer();
+    void sendButtonClickedMessage();
 
 private slots:
     void newConnection();
