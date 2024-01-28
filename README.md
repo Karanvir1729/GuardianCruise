@@ -42,7 +42,6 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 - [![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)](https://git-scm.com/)
 - [![Cohere](https://img.shields.io/badge/Cohere-2c3e50?style=flat-square&logo=cohere&logoColor=white)](https://www.cohere.ai/)
 
- - 
 
 GuardianCruise utilizes OpenCV for facial feature detection, including eye tracking and yawning detection. The collected data is then fed into a machine learning model trained to recognize patterns associated with mood changes, impairment, and specific activities.
 
