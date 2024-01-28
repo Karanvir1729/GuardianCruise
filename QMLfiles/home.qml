@@ -1,11 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtWebEngine
-import QtLocation
-import QtPositioning 6.6
-import QtQml.Models
-import QtWebView
+import QtMultimedia
+import com.video 1.0
 
 Page
 {
@@ -35,7 +32,6 @@ Page
        anchors.verticalCenter: parent.verticalCenter
        anchors.left: parent.left
        anchors.leftMargin: 40
-
    }
 
    Rectangle
@@ -82,6 +78,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -95,7 +93,7 @@ Page
 
                    onClicked:
                    {
-
+                        //loader.push("qrc:/GuardianCruise/QMLfiles/home.qml")
                    }
                }
 
@@ -114,6 +112,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -127,10 +127,9 @@ Page
 
                    onClicked:
                    {
-
+                        loader.push("qrc:/GuardianCruise/QMLfiles/graphs.qml")
                    }
                }
-
            }
 
 
@@ -146,6 +145,8 @@ Page
                    anchors.fill: parent
                    hoverEnabled: true
                    propagateComposedEvents: true
+                   acceptedButtons: Qt.LeftButton
+                   cursorShape: Qt.PointingHandCursor
 
                    onEntered:
                    {
@@ -159,7 +160,7 @@ Page
 
                    onClicked:
                    {
-
+                        loader.push("qrc:/GuardianCruise/QMLfiles/crash.qml")
                    }
                }
 
@@ -175,9 +176,10 @@ Page
        anchors.bottom: cameraNav.top
        anchors.bottomMargin: 30
 
+
        Timer {
            id: timer
-           interval: 1000 // Update every 1000 milliseconds (1 second)
+           interval: 1
            running: true
            repeat: true
 
@@ -193,6 +195,7 @@ Page
            font.family: black.name
            color: "White"
            font.pixelSize: 30
+           text: " "
        }
        FontLoader {
            id: black
@@ -208,6 +211,7 @@ Page
            font.family: regular.name
            color: "White"
            font.pixelSize: 20
+           text: " "
        }
 
    }
@@ -223,10 +227,8 @@ Page
    }
 
 
-   Rectangle
-   {
+   Rectangle {
        id: cameraNav
-
        width: 400
        height: 760
        anchors.left: appNav.right
@@ -235,7 +237,33 @@ Page
        anchors.bottomMargin: 40
        opacity: 0.1
        radius: 10
+
+       VideoReceiver {
+           id: videoReceiver
+       }
+
+       VideoOutput {
+           id: videopull
+           width: parent.width
+           height: parent.height
+           anchors.horizontalCenter: parent.horizontalCenter
+       }
+
+       Component.onCompleted: {
+           // Connect to the server
+           videoReceiver.startServer(5560);
+       }
+
+       Connections {
+           target: videoReceiver
+           function onFrameReceived(frame)
+           {
+               videopull.source = frame;
+               console.log("frame receiving");
+           }
+       }
    }
+
 
     Rectangle
     {
@@ -262,19 +290,19 @@ Page
         opacity: 0.1
         radius: 10
 
-            WebView {
-                id: webView
-                url: "qrc:/google_maps.html"
+            // WebView {
+            //     id: webView
+            //     url: "qrc:/google_maps.html"
 
-                BusyIndicator {
-                    id: busy_indicator;
-                    running: false
-                    width:  100;
-                    height: 100;
-                    anchors.centerIn:  parent;
-                    visible: false
-                }
-            }
+            //     BusyIndicator {
+            //         id: busy_indicator;
+            //         running: false
+            //         width:  100;
+            //         height: 100;
+            //         anchors.centerIn:  parent;
+            //         visible: false
+            //     }
+            // }
     }
 
     Rectangle
@@ -349,6 +377,8 @@ Page
             anchors.fill: parent
             hoverEnabled: true
             propagateComposedEvents: true
+            acceptedButtons: Qt.LeftButton
+            cursorShape: Qt.PointingHandCursor
             onEntered:
             {
                 accident.color = "White"
@@ -365,12 +395,13 @@ Page
 
             onClicked:
             {
-
+                loader.push("qrc:/GuardianCruise/QMLfiles/crash.qml")
             }
         }
     }
 
-    Text {
+    Text
+    {
         id: accText
         text: qsTr("Accident")
         anchors.centerIn: accident
@@ -378,5 +409,4 @@ Page
         font.family: regular.name
         font.pixelSize: 15
     }
-
 }
