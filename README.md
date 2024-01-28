@@ -46,10 +46,10 @@ GuardianCruise is a two-fold project that addresses both the **pre-crash** and *
 GuardianCruise utilizes OpenCV for facial feature detection, including eye tracking and yawning detection. The collected data is then fed into a machine learning model trained to recognize patterns associated with mood changes, impairment, and specific activities.
 
 ## Screenshots
+- ![msedge_ETmr7eaH0m](https://github.com/Karanvir1729/GuardianCruise/assets/99195418/f3fa6216-cadb-4c25-9ba3-2ef3674839f7)
+- ![msedge_voEfYzVVEs](https://github.com/Karanvir1729/GuardianCruise/assets/99195418/1b17720d-76f4-42cc-845d-82b8f3b517ba)
 
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
-<!-- Add more screenshots as needed -->
+
 
 ## Installation
 
