@@ -1,6 +1,6 @@
 # GuardianCruise
 
-Introducing [Your Project Name], a [brief description or tagline about your project]. [Provide a concise and engaging overview of what your project aims to achieve.]
+Introducing **GuardianCruise**, a project inspired by a dedication to road safety and the prevention of accidents caused by distracted driving. This initiative is driven by the motivation to avoid accidents and injuries, particularly in the context of a recent incident involving a friend.
 
 ## Table of Contents
 
@@ -16,31 +16,30 @@ Introducing [Your Project Name], a [brief description or tagline about your proj
 
 ## Overview
 
-[Provide a brief introduction to your project. What problem does it solve? What makes it unique? Why should users be interested in it?]
+GuardianCruise is a two-fold project that addresses both the **pre-crash** and **post-crash** scenarios. The pre-crash phase involves facial analysis using OpenCV to detect signs of distracted driving and suspicious behaviors. In the post-crash phase, the project aims to provide care and assistance.
 
 ## Features
 
-1. **Feature 1:**
-   - [Description of the feature and its benefits.]
+1. **Pre-crash Monitoring:**
+   - Facial analysis using OpenCV.
+   - Detection of distracted driving and suspicious behaviors.
 
-2. **Feature 2:**
-   - [Description of the feature and its benefits.]
+2. **Post-crash Assistance:**
+   - Sending emails and text messages to the driver's parents.
+   - Alerting law enforcement and other relevant authorities.
+   - Capturing an image post-crash.
+   - Describing the scenario to parents and law enforcement.
 
-3. **Feature 3:**
-   - [Description of the feature and its benefits.]
-
-[Continue listing the key features of your project.]
+3. **Machine Learning Integration:**
+   - Recognition of patterns associated with mood changes, impairment, and specific activities like phone usage or conversation.
 
 ## Tech Stack
 
-[Include badges or logos of the technologies and tools used in your project.]
+- ![OpenCV Logo](path/to/opencv.png)
+- ![Machine Learning Logo](path/to/ml.png)
+- [Add logos or badges of other technologies used.]
 
-- ![Technology 1 Logo](path/to/logo1.png)
-- ![Technology 2 Logo](path/to/logo2.png)
-- ![Technology 3 Logo](path/to/logo3.png)
-- ...
-
-[Provide a brief description of your tech stack and any notable frameworks, libraries, or tools.]
+GuardianCruise utilizes OpenCV for facial feature detection, including eye tracking and yawning detection. The collected data is then fed into a machine learning model trained to recognize patterns associated with mood changes, impairment, and specific activities.
 
 ## Screenshots
 
@@ -71,16 +70,16 @@ Introducing [Your Project Name], a [brief description or tagline about your proj
 
 ## Usage
 
-[Provide instructions and examples for users to effectively use your project. Include any configuration settings or additional steps needed.]
+[Provide instructions and examples for users to effectively use GuardianCruise. Include any configuration settings or additional steps needed.]
 
 ## Contributing
 
-[Explain how others can contribute to your project. Include information about submitting issues, feature requests, or pull requests.]
+[Explain how others can contribute to GuardianCruise. Include information about submitting issues, feature requests, or pull requests.]
 
 ## License
 
-[Include information about the license under which your project is distributed. For example, you can use a license badge and provide a link to the license file.]
+[Include information about the license under which GuardianCruise is distributed. For example, you can use a license badge and provide a link to the license file.]
 
 ## Acknowledgements
 
-[If your project uses third-party libraries, services, or tools, acknowledge and thank the respective authors or organizations.]
+[Acknowledge and thank any third-party libraries, services, or tools used in GuardianCruise.]
