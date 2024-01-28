@@ -277,6 +277,26 @@ Page
         opacity: 0.1
         radius: 10
     }
+    Rectangle
+    {
+        id: mediaNav1
+        width: 450
+        height: 140
+        anchors.left: cameraNav.right
+        anchors.leftMargin: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 40
+        color: "Transparent"
+        radius: 10
+        clip: true
+        AnimatedImage
+        {
+            id: gifmap
+            source: "qrc:/map"
+            anchors.fill: parent
+
+        }
+    }
 
     Rectangle
     {
@@ -330,6 +350,39 @@ Page
         anchors.bottomMargin: 40
         opacity: 0.1
         radius: 10
+    }
+
+    Rectangle
+    {
+        id: conNav1
+        width: 400
+        height: 760
+        anchors.right: parent.right
+        anchors.rightMargin: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 40
+        color: "Transparent"
+        radius: 10
+        Text {
+                id:chatText
+                width: parent.width * 0.8
+                height: parent.width * 0.7
+                text: "" // Initial empty text
+                FontLoader {
+                    id: medium
+                    source: "qrc:/medium"
+                }
+                color: "White"
+                font.family: "medium"
+                minimumPixelSize: 40
+                verticalAlignment:Text.AlignJustify
+                wrapMode: Text.WordWrap
+                Connections
+                {
+                    target: chatReceiver
+
+                }
+            }
     }
 
     Image {
@@ -399,7 +452,6 @@ Page
             }
         }
     }
-
     Text
     {
         id: accText

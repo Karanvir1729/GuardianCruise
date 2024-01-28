@@ -5,5 +5,6 @@
         <file alias="app">app.png</file>
         <file alias="graph">graph.png</file>
         <file alias="crash">Asset 3.png</file>
+        <file alias="map">MapGif (1).gif</file>
     </qresource>
 </RCC>

@@ -15,6 +15,4 @@ Page
             source: "qrc:/bg.svg"
         }
     }
-
-
 }
