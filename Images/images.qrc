@@ -6,5 +6,8 @@
         <file alias="graph">graph.png</file>
         <file alias="crash">Asset 3.png</file>
         <file alias="map">MapGif (1).gif</file>
+        <file alias="cover">Asset 4-8.png</file>
+        <file alias="pause">Asset 7-8.png</file>
+        <file alias="play">Asset 6-8.png</file>
     </qresource>
 </RCC>

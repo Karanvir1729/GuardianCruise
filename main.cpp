@@ -4,6 +4,7 @@
 #include "videoreceiver.h"
 #include "chatreceiver.h"
 #include <qprocess.h>
+#include <QCamera>
 
 int main(int argc, char *argv[])
 {

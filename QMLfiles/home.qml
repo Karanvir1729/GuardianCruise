@@ -242,12 +242,12 @@ Page
            id: videoReceiver
        }
 
-       VideoOutput {
-           id: videopull
-           width: parent.width
-           height: parent.height
-           anchors.horizontalCenter: parent.horizontalCenter
-       }
+       // VideoOutput {
+       //     id: videopull
+       //     width: parent.width
+       //     height: parent.height
+       //     anchors.horizontalCenter: parent.horizontalCenter
+       // }
 
        Component.onCompleted: {
            // Connect to the server
@@ -337,6 +337,78 @@ Page
         opacity: 0.1
         radius: 10
     }
+
+    Rectangle
+    {
+        id: weatherNav1
+        width: 450
+        height: 160
+        anchors.left: cameraNav.right
+        anchors.leftMargin: 30
+        anchors.bottom: mapNav.top
+        anchors.bottomMargin: 30
+        color: "Transparent"
+        radius: 10
+
+
+
+        Image
+        {
+            id: albumcover
+            source: "qrc:/cover"
+            height: 400
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+        }
+
+        Image {
+            id: ppb
+            source: "qrc:/play"
+            height: 50
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 30
+
+        }
+
+        MediaPlayer {
+            id:music
+            audioOutput: AudioOutput {}
+            source: "qrc:/music"
+            // Component.onCompleted: { play() }
+        }
+
+        MouseArea
+        {
+            id: musicA
+            anchors.fill: parent
+            propagateComposedEvents: true
+            onClicked: {
+                console.log("MouseArea clicked");
+                if (ppb.source !== "qrc:/play")
+                {
+                    console.log("Changing source to pause");
+                    ppb.source = "qrc:/pause";
+                    music.play();
+                } if(ppb.source === "qrc:/play")
+                {
+                    console.log("Changing source to play");
+                    ppb.source = "qrc:/pause";
+
+                }
+                else
+                {
+                    console.log("Changing source to play");
+                    ppb.source = "qrc:/pause";
+                }
+            }
+        }
+
+    }
+
 
     Rectangle
     {

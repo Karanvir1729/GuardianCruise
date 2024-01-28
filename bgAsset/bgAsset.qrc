@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>bg.svg</file>
+        <file alias="music">Hey Jude (Remastered 2015).mp3</file>
     </qresource>
 </RCC>
