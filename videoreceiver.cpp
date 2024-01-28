@@ -37,36 +37,74 @@ void VideoReceiver::newConnection()
 void VideoReceiver::readData()
 {
     qDebug() << "Connected...";
-    while (socket->bytesAvailable() > 0)
+
+    if (socket->bytesAvailable() < static_cast<int>(sizeof(quint64)))
     {
-        if (expectedDataSize == 0)
-        {
-            if (socket->bytesAvailable() < static_cast<int>(sizeof(quint64)))
-            {
-                return;
-            }
+        qDebug() << "Not enough data for size, waiting for more data";
+        return;
+    }
 
-            socket->read(reinterpret_cast<char *>(&expectedDataSize), sizeof(quint64));
-        }
+    socket->read(reinterpret_cast<char *>(&expectedDataSize), sizeof(quint64));
 
-        if (socket->bytesAvailable() < expectedDataSize)
+    if (expectedDataSize <= 0)
+    {
+        qDebug() << "Invalid data size received: " << expectedDataSize;
+        return;
+    }
+
+    qDebug() << "Received Data Size: " << expectedDataSize;
+
+    // Wait for the complete data payload
+    if (socket->waitForReadyRead(-1))
+    {
+        buffer = socket->read(expectedDataSize);
+
+        if (buffer.size() != expectedDataSize)
         {
+            qDebug() << "Received incomplete data payload. Expected:" << expectedDataSize << ", Received:" << buffer.size();
             return;
         }
 
-        buffer = socket->read(expectedDataSize);
+        // Print the received raw data in hex and as a string
+        qDebug() << "Received Data (Hex):" << buffer.toHex();
+        qDebug() << "Received Data (String):" << buffer;
+
         QImage frame = byteArrayToImage(buffer);
+
+        if (frame.isNull())
+        {
+            qDebug() << "Error loading image from data.";
+            return;
+        }
+
+        qInfo() << "Received Frame:" << frame;
+
         emit frameReceived(frame);
+
+        // Send acknowledgment back to the client (optional)
+        socket->write("ACK");
 
         // Clear the buffer as it has already been emitted
         expectedDataSize = 0;
     }
+
+    else
+    {
+        qDebug() << "waitForReadyRead timed out or encountered an error.";
+    }
 }
+
+
 
 QImage VideoReceiver::byteArrayToImage(const QByteArray &data)
 {
     QDataStream stream(data);
     QImage image;
     stream >> image;
+
+    if (image.isNull())
+    {
+        qDebug() << "Error loading image from data.";
+    }
     return image;
 }
